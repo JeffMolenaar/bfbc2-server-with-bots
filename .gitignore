@@ -1,0 +1,36 @@
+# BFBC2 Server Files (user must obtain separately)
+BFBC2_Server.exe
+*.dll
+*.dat
+
+# Server directories that contain user-added files
+/maps/
+/data/
+/vu/VeniceUnleashed.exe
+/vu/*.dll
+
+# Generated files
+/server/logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+
+# Windows
+Thumbs.db
+*.lnk
+
+# User-specific configuration overrides
+server/config/*_local.cfg
+server/config/passwords.cfg
+
+# Backup files
+*.bak
+*.backup
+
+# Server-generated content
+/screenshots/
+/demos/
+/replays/

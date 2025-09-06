@@ -1,0 +1,97 @@
+@echo off
+REM BFBC2 Server Startup Script for Windows 11
+REM Harbor Conquest with Bots
+
+echo ========================================
+echo  BFBC2 Harbor Conquest Server with Bots
+echo ========================================
+echo.
+
+REM Check if running as administrator
+net session >nul 2>&1
+if %errorLevel% == 0 (
+    echo Running with administrator privileges...
+) else (
+    echo WARNING: Not running as administrator
+    echo Some features may not work properly
+    echo.
+)
+
+REM Set server directory
+set SERVER_DIR=%~dp0..
+set CONFIG_DIR=%SERVER_DIR%\config
+set LOG_DIR=%SERVER_DIR%\logs
+
+echo Server Directory: %SERVER_DIR%
+echo Config Directory: %CONFIG_DIR%
+echo Log Directory: %LOG_DIR%
+echo.
+
+REM Create logs directory if it doesn't exist
+if not exist "%LOG_DIR%" mkdir "%LOG_DIR%"
+
+REM Check for required files
+echo Checking required files...
+if not exist "%CONFIG_DIR%\server.cfg" (
+    echo ERROR: server.cfg not found!
+    pause
+    exit /b 1
+)
+if not exist "%CONFIG_DIR%\admin.cfg" (
+    echo ERROR: admin.cfg not found!
+    pause
+    exit /b 1
+)
+echo All required configuration files found.
+echo.
+
+REM Display server information
+echo Server Configuration:
+echo - Map: Harbor (Conquest Mode)
+echo - Max Players: 32 (8 human + 24 bots)
+echo - VU Compatible: Yes
+echo - Port: 19567
+echo - Admin Password: admin123 (CHANGE THIS!)
+echo.
+
+REM Windows Firewall configuration
+echo Configuring Windows Firewall...
+netsh advfirewall firewall add rule name="BFBC2 Server Port 19567" dir=in action=allow protocol=TCP localport=19567 >nul 2>&1
+netsh advfirewall firewall add rule name="BFBC2 Server Port 19567 UDP" dir=in action=allow protocol=UDP localport=19567 >nul 2>&1
+netsh advfirewall firewall add rule name="BFBC2 VU HTTP Port 8080" dir=in action=allow protocol=TCP localport=8080 >nul 2>&1
+netsh advfirewall firewall add rule name="BFBC2 RCON Port 47200" dir=in action=allow protocol=TCP localport=47200 >nul 2>&1
+echo Firewall rules added.
+echo.
+
+REM Start the server
+echo Starting BFBC2 Server...
+echo Press Ctrl+C to stop the server
+echo.
+
+REM Note: Replace this with actual BFBC2 server executable path
+REM This is a placeholder - user needs to provide actual server files
+if exist "%SERVER_DIR%\BFBC2_Server.exe" (
+    cd /d "%SERVER_DIR%"
+    "%SERVER_DIR%\BFBC2_Server.exe" +exec "%CONFIG_DIR%\server.cfg" +exec "%CONFIG_DIR%\admin.cfg" +exec "%CONFIG_DIR%\maplist.cfg"
+) else (
+    echo.
+    echo ==========================================
+    echo  SERVER EXECUTABLE NOT FOUND
+    echo ==========================================
+    echo.
+    echo The BFBC2 server executable was not found.
+    echo Please place the following files in the server directory:
+    echo.
+    echo Required files:
+    echo - BFBC2_Server.exe
+    echo - Server game files and maps
+    echo - Bot AI files
+    echo.
+    echo Download BFBC2 server files from official sources
+    echo or use Venice Unleashed mod files.
+    echo.
+    echo Once files are in place, run this script again.
+    echo.
+)
+
+pause
