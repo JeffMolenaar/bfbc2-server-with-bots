@@ -1,0 +1,9 @@
+# Game Data Files Placeholder
+#
+# Place BFBC2 game data files here
+# These include:
+# - Common game assets
+# - Shared game data
+# - Base game files required by the server
+#
+# These files come with the BFBC2 server package

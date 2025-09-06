@@ -133,13 +133,18 @@ Write-Host ""
 Write-ColorOutput "Checking for server executable..." "Cyan"
 
 $serverExe = Join-Path $ServerDir "BFBC2_Server.exe"
-$vuServerExe = Join-Path $ServerDir "vu\VeniceUnleashed.exe"
+$vuServerExe = Join-Path $ServerDir "server_files\vu\VeniceUnleashed.exe"
+$vuServerExeOld = Join-Path $ServerDir "vu\VeniceUnleashed.exe"
 
 if (Test-Path $serverExe) {
     Write-ColorOutput "✓ BFBC2 server executable found" "Green"
     $useVU = $false
 } elseif (Test-Path $vuServerExe) {
-    Write-ColorOutput "✓ Venice Unleashed executable found" "Green"
+    Write-ColorOutput "✓ Venice Unleashed executable found (new location)" "Green"
+    $useVU = $true
+} elseif (Test-Path $vuServerExeOld) {
+    Write-ColorOutput "✓ Venice Unleashed executable found (legacy location)" "Green"
+    $vuServerExe = $vuServerExeOld
     $useVU = $true
 } else {
     Write-Host ""
@@ -147,15 +152,21 @@ if (Test-Path $serverExe) {
     Write-ColorOutput " SERVER EXECUTABLE NOT FOUND" "Red"
     Write-ColorOutput "===========================================" "Red"
     Write-Host ""
-    Write-ColorOutput "Required files not found. Please ensure you have:" "Yellow"
+    Write-ColorOutput "No server executable found. Please run setup:" "Yellow"
+    Write-Host ""
+    Write-ColorOutput "QUICK SETUP:" "Cyan"
+    Write-Host "  • Run 'setup_complete_server.bat' for guided installation"
+    Write-Host ""
+    Write-ColorOutput "MANUAL SETUP:" "Cyan"
     Write-Host "  • BFBC2 server files (BFBC2_Server.exe)"
-    Write-Host "  • Game maps and assets"
-    Write-Host "  • Bot AI files"
-    Write-Host "  • Venice Unleashed mod (optional but recommended)"
+    Write-Host "  • Game maps and assets (in server_files/maps/)"
+    Write-Host "  • Game data files (in server_files/data/)"
+    Write-Host "  • Venice Unleashed mod (optional, in server_files/vu/)"
     Write-Host ""
     Write-ColorOutput "Download sources:" "Cyan"
-    Write-Host "  • Official BFBC2 server files"
     Write-Host "  • Venice Unleashed: https://veniceunleashed.net/"
+    Write-Host "  • Official BFBC2 server files"
+    Write-Host "  • Community server packages"
     Write-Host ""
     Read-Host "Press Enter to exit"
     exit 1

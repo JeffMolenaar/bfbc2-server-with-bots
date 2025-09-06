@@ -1,0 +1,10 @@
+# Map Files Placeholder
+#
+# Place Harbor map files (MP_012) and other BFBC2 map files here
+# Required for the server to load maps properly
+#
+# Expected files:
+# - MP_012/ (Harbor map directory)
+# - Other map directories as needed
+#
+# These files come with the BFBC2 server package

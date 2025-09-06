@@ -1,0 +1,10 @@
+# Venice Unleashed Files Placeholder
+#
+# Place Venice Unleashed mod files here (optional but recommended)
+# 
+# Expected files:
+# - VeniceUnleashed.exe (main VU executable)
+# - VU mod files and assets
+# - Enhanced server features
+#
+# Download from: https://veniceunleashed.net/
