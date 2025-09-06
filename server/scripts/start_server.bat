@@ -68,11 +68,14 @@ echo Starting BFBC2 Server...
 echo Press Ctrl+C to stop the server
 echo.
 
-REM Note: Replace this with actual BFBC2 server executable path
-REM This is a placeholder - user needs to provide actual server files
+REM Check for server executable in multiple locations
 if exist "%SERVER_DIR%\BFBC2_Server.exe" (
     cd /d "%SERVER_DIR%"
-    "%SERVER_DIR%\BFBC2_Server.exe" +exec "%CONFIG_DIR%\server.cfg" +exec "%CONFIG_DIR%\admin.cfg" +exec "%CONFIG_DIR%\maplist.cfg"
+    "%SERVER_DIR%\BFBC2_Server.exe" +exec "%CONFIG_DIR%\server.cfg" +exec "%CONFIG_DIR%\admin.cfg" +exec "%CONFIG_DIR%\maplist.cfg" +exec "%SERVER_DIR%\bots\bot_config.cfg"
+) else if exist "%SERVER_DIR%\server_files\vu\VeniceUnleashed.exe" (
+    echo Found Venice Unleashed server, starting with VU...
+    cd /d "%SERVER_DIR%"
+    "%SERVER_DIR%\server_files\vu\VeniceUnleashed.exe" -server -config "%SERVER_DIR%\vu\vu_config.cfg"
 ) else (
     echo.
     echo ==========================================
@@ -80,17 +83,22 @@ if exist "%SERVER_DIR%\BFBC2_Server.exe" (
     echo ==========================================
     echo.
     echo The BFBC2 server executable was not found.
-    echo Please place the following files in the server directory:
     echo.
-    echo Required files:
-    echo - BFBC2_Server.exe
-    echo - Server game files and maps
-    echo - Bot AI files
+    echo QUICK SETUP:
+    echo Run 'setup_complete_server.bat' for guided installation
     echo.
-    echo Download BFBC2 server files from official sources
-    echo or use Venice Unleashed mod files.
+    echo MANUAL SETUP:
+    echo Place the following files:
+    echo - BFBC2_Server.exe in the root directory
+    echo - Game files in server_files\ directory
+    echo - Maps in server_files\maps\
     echo.
-    echo Once files are in place, run this script again.
+    echo DOWNLOAD SOURCES:
+    echo - Venice Unleashed: https://veniceunleashed.net/
+    echo - Official BFBC2 server files
+    echo - Community server packages
+    echo.
+    echo See SETUP.md for detailed instructions.
     echo.
 )
 

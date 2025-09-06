@@ -13,9 +13,16 @@ A complete Battlefield Bad Company 2 server setup for Windows 11, pre-configured
 ## Quick Start
 
 1. **Clone this repository**
-2. **Run verification**: `verify_installation.bat`
-3. **Get BFBC2 server files** (see [SETUP.md](SETUP.md))
+2. **Complete setup**: Run `setup_complete_server.bat` (or `.ps1`) for guided installation
+3. **OR verify manual setup**: `verify_installation.bat`
 4. **Start server**: `server/scripts/start_server.bat`
+
+### Alternative Quick Setup
+If you already have BFBC2 server files:
+1. Place `BFBC2_Server.exe` in the root directory
+2. Place game files in `server_files/` subdirectories
+3. Run `verify_installation.bat` to check everything
+4. Start with `server/scripts/start_server.bat`
 
 ## Server Specifications
 
@@ -39,6 +46,7 @@ A complete Battlefield Bad Company 2 server setup for Windows 11, pre-configured
 - 🌐 **VU Configuration** (`server/vu/vu_config.cfg`) - Venice Unleashed integration
 
 ### Startup Scripts
+- 🔧 **Complete Setup** (`setup_complete_server.bat` / `.ps1`) - Guided complete server installation
 - 📄 **Batch Script** (`server/scripts/start_server.bat`) - Simple Windows startup
 - ⚡ **PowerShell Script** (`server/scripts/start_server.ps1`) - Advanced startup with error handling
 - ✅ **Verification Script** (`verify_installation.bat`) - Check installation completeness
@@ -83,7 +91,8 @@ The server uses these ports (automatically configured in Windows Firewall):
 ## Troubleshooting
 
 **Common Issues:**
-- 🔧 **Server won't start**: Check if BFBC2_Server.exe exists
+- 🔧 **Server won't start**: Run `setup_complete_server.bat` for guided setup
+- 🔧 **Missing files**: Check `verify_installation.bat` output
 - 🌐 **Not visible in VU**: Verify network ports are open
 - 🤖 **No bots spawning**: Check bot configuration and minimum player count
 
@@ -94,7 +103,10 @@ See [SETUP.md](SETUP.md) for detailed troubleshooting and configuration options.
 ```
 bfbc2-server-with-bots/
 ├── 📄 README.md              # This file
-├── 📖 SETUP.md               # Detailed setup guide
+├── 📖 SETUP.md               # Detailed setup guide  
+├── 📖 COMPLETE_SETUP_GUIDE.md # Complete setup instructions
+├── 🔧 setup_complete_server.bat # Complete server setup guide (Batch)
+├── 🔧 setup_complete_server.ps1 # Complete server setup guide (PowerShell)
 ├── ✅ verify_installation.bat # Installation checker
 ├── 📁 server/
 │   ├── 📁 config/            # Server configuration files
@@ -102,7 +114,13 @@ bfbc2-server-with-bots/
 │   ├── 📁 vu/                # Venice Unleashed settings
 │   ├── 📁 scripts/           # Startup scripts
 │   └── 📁 logs/              # Server logs (auto-created)
-└── 🎮 [Server Files]         # BFBC2 executable & data (add these)
+├── 📁 server_files/          # Server executable & game data
+│   ├── 📁 maps/              # Game maps including Harbor
+│   ├── 📁 data/              # Game data files
+│   ├── 📁 vu/                # Venice Unleashed files
+│   └── 📁 mods/              # Server modifications
+├── 📁 downloads/             # Temporary download storage
+└── 🎮 BFBC2_Server.exe       # Main server executable (add this)
 ```
 
 ## License
