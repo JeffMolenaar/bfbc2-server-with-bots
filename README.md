@@ -13,8 +13,8 @@ A complete Battlefield Bad Company 2 server setup for Windows 11, pre-configured
 ## Quick Start
 
 1. **Clone this repository**
-2. **Complete setup**: Run `setup_complete_server.bat` (or `.ps1`) for guided installation
-3. **OR verify manual setup**: `verify_installation.bat`
+2. **Instant check**: Run `quick_start.bat` to see status and next steps
+3. **Complete setup**: Run `setup_complete_server.bat` (or `.ps1`) for guided installation
 4. **Start server**: `server/scripts/start_server.bat`
 
 ### Alternative Quick Setup
@@ -46,6 +46,7 @@ If you already have BFBC2 server files:
 - 🌐 **VU Configuration** (`server/vu/vu_config.cfg`) - Venice Unleashed integration
 
 ### Startup Scripts
+- 🚀 **Quick Start** (`quick_start.bat`) - Instant status check and next steps
 - 🔧 **Complete Setup** (`setup_complete_server.bat` / `.ps1`) - Guided complete server installation
 - 📄 **Batch Script** (`server/scripts/start_server.bat`) - Simple Windows startup
 - ⚡ **PowerShell Script** (`server/scripts/start_server.ps1`) - Advanced startup with error handling
@@ -129,4 +130,4 @@ This configuration package is provided as-is for community use. Ensure you have 
 
 ---
 
-**Ready to deploy your Harbor Conquest server? Start with [SETUP.md](SETUP.md)!**
+**🚀 Ready to get started? Run `quick_start.bat` for immediate next steps or `setup_complete_server.bat` for guided installation!**
